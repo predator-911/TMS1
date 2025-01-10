@@ -1,6 +1,6 @@
-fastapi 
-uvicorn 
-torch 
-diffusers 
-pillow 
+torch
+diffusers
+pillow
 numpy
+fastapi
+uvicorn
