@@ -5,6 +5,7 @@ from PIL import Image
 import numpy as np
 import torch
 import os
+import uvicorn
 
 app = FastAPI()
 
@@ -89,3 +90,8 @@ async def decode(file: UploadFile = File(...)):
         f.write(await file.read())
     decoded_message = decode_text_from_image(input_path)
     return {"decoded_message": decoded_message}
+
+# To run the FastAPI app properly on Render
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
